@@ -12,6 +12,7 @@ public class Index extends ActionSupport {
     
     private DataConnection connectionData;  //db connect. data    
     private DataQuery queryData;            //search query & data
+    private String[] folders = {"D:\\Video","C:\\Video"};
     
     public DataConnection getConnectionData() {
         return connectionData;
@@ -27,6 +28,14 @@ public class Index extends ActionSupport {
 
     public void setQueryData(DataQuery queryData) {
         this.queryData = queryData;
+    }
+
+    public String[] getFolders() {
+        return folders;
+    }
+
+    public void setFolders(String[] folders) {
+        this.folders = folders;
     }
 
     /****************************************/ 

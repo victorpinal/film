@@ -52,7 +52,6 @@ public class MySQL {
     }
     
     public static MySQL getInstance() {      
-        _log.info("getInstance");
         return instance==null?new MySQL():instance;
     }
 

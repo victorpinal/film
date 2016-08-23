@@ -8,16 +8,17 @@
 	<title><s:text name="title"/></title>
 	<link rel="stylesheet" href="../resources/index.css">
     <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+    <s:head  />
 </head>
 <body>
-	<form action="index" method="get" accept-charset="utf-8">
+	<form method="post" accept-charset="utf-8">
         <div class="barra_superior">
             <input type="text" name="queryData.query" class="relleno" value="<s:property value='queryData.query'/>" placeholder="">                       
             <button type="button"><img src="../resources/close.png" alt=""></button>
-            <label><input type="checkbox" name="queryData.mru" value="true" checked="<s:property value='queryData.mru'/>">MRU</label>
-            <label><input type="checkbox" name="queryData.todo" value="true">Todo</label>
-            <label><input type="checkbox" name="queryData.pend" value="true">Pend.IMDB</label>
-            <label><input type="checkbox" name="queryData.dupl" value="true">Duplicados</label>
+            <s:checkbox key="queryData.mru"/>
+            <s:checkbox key="queryData.todo"/>
+            <s:checkbox key="queryData.pend"/>
+            <s:checkbox key="queryData.dupl"/>
             <button type="button"><img src="../resources/refresca.png" alt=""></button>
             <button type="button"><img src="../resources/xml.png" alt=""></button>
         </div>
@@ -55,9 +56,7 @@
 		</table>
         <div class="barra_inferior">
             <button type="button"><img src="../resources/Home.png" alt="">Change dir</button>
-            <select name="dir" class="relleno">
-                <option value="">D:\Video</option>			
-            </select>
+            <s:select list="folders"></s:select>
             <button type="button"><img src="../resources/carpeta.png" alt=""></button>
             <span>Videos: #Num de #NUM | Media Rating: #Media de #MEDIA</span>
             <button type="button"><img src="../resources/refresca.png" alt="">Refresh</button>

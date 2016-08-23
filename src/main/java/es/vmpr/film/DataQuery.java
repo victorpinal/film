@@ -7,6 +7,7 @@ public class DataQuery {
     private boolean todo;
     private boolean pend;
     private boolean dupl;
+    private String dir;
     
     public String getQuery() {
         return query;
@@ -37,6 +38,12 @@ public class DataQuery {
     }
     public void setDupl(boolean dupl) {
         this.dupl = dupl;
+    }
+    public String getDir() {
+        return dir;
+    }
+    public void setDir(String dir) {
+        this.dir = dir;
     }
     
 }

@@ -24,9 +24,13 @@ input[type="checkbox"], span  {
     margin: 5px;
 }
 
+.checkboxLabel {
+    margin: 5px auto;
+}
+
 button {
     margin: auto 2px;
-    display: inline-flex;
+/*    display: inline-flex;*/
 }
 
 .relleno {
