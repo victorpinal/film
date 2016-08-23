@@ -1,0 +1,38 @@
+* {
+	margin: 0px;
+	padding: 0px;
+    font: 11px Arial;
+}
+
+html,body {
+	height: 100%;	
+    background-color: #e5e6e6;
+}
+
+table {
+	border-collapse: collapse;
+	width: 99%;
+    margin: 6px;
+}
+
+.barra_superior, .barra_inferior {    
+    margin: 5px 5px;
+    display: flex;
+}
+
+input[type="checkbox"], span  {
+    margin: 5px;
+}
+
+button {
+    margin: auto 2px;
+    display: inline-flex;
+}
+
+.relleno {
+    flex-grow: 1;
+}
+
+.img_col, td img {
+    width: 20px;
+}
