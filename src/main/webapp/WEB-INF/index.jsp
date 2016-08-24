@@ -39,27 +39,29 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<td class="img_col"><img src="../resources/Video.png"></td>
-					<td>data</td>
-					<td class="img_col"><img src="../resources/informacion.png"></td>
-					<td>data</td>
-					<td>data</td>
-					<td class="img_col"><img src="../resources/busca.png"></td>
-					<td class="img_col"><img src="../resources/subs.png"></td>
-					<td>data</td>
-					<td class="img_col"><img src="../resources/carpeta.png"></td>
-					<td>data</td>
-					<td>data</td>
-				</tr>
+                <s:iterator value="formData.films" var="film">
+                <tr>
+                    <td class="img_col"><img src="../resources/Video.png"></td>
+                    <td><s:property value="#film.filename"/></td>
+                    <td class="img_col"><img src="../resources/informacion.png"></td>
+                    <td><s:property value="#film.ruta"/></td>
+                    <td><s:property value="#film.name"/></td>
+                    <td class="img_col"><img src="../resources/busca.png"></td>
+                    <td class="img_col"><img src="../resources/subs.png"></td>
+                    <td><s:property value="#film.imdb_id"/></td>
+                    <td class="img_col"><img src="../resources/carpeta.png"></td>
+                    <td><s:property value="#film.imdb_rating"/></td>
+                    <td><s:property value="#film.imdb_ratingcount"/></td>
+                </tr>
+                </s:iterator>				
 			</tbody>
 		</table>
         <div class="barra_inferior">
             <button type="button"><img src="../resources/Home.png" alt="">Change dir</button>
-            <s:select list="folders"></s:select>
+            <s:select list="formData.mru" name="queryData.dir" onchange="jQuery('form')[0].submit();"></s:select>
             <button type="button"><img src="../resources/carpeta.png" alt=""></button>
-            <span>Videos: #Num de #NUM | Media Rating: #Media de #MEDIA</span>
-            <button type="button"><img src="../resources/refresca.png" alt="">Refresh</button>
+            <span>Videos: #Num de <s:property value="%{formData.films[0].total}"/> | Media Rating: #Media de #MEDIA</span>
+            <button type="submit"><img src="../resources/refresca.png" alt="">Refresh</button>
         </div>
 	</form>    
     <script>
