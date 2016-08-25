@@ -8,17 +8,18 @@
 	<title><s:text name="title"/></title>
 	<link rel="stylesheet" href="../resources/index.css">
     <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+    <script src="../resources/index.js"></script>
     <s:head  />
 </head>
 <body>
 	<form method="post" accept-charset="utf-8">
         <div class="barra_superior">
-            <input type="text" name="queryData.query" class="relleno" value="<s:property value='queryData.query'/>" placeholder="">                       
+            <input type="text" name="formData.query" class="relleno" value="<s:property value='formData.query'/>" placeholder="">                       
             <button type="button"><img src="../resources/close.png" alt=""></button>
-            <s:checkbox key="queryData.mru"/>
-            <s:checkbox key="queryData.todo"/>
-            <s:checkbox key="queryData.pend"/>
-            <s:checkbox key="queryData.dupl"/>
+            <s:checkbox key="formData.showOnlyMRU"/>
+            <s:checkbox key="formData.showAll"/>
+            <s:checkbox key="formData.showPend"/>
+            <s:checkbox key="formData.showDupl"/>
             <button type="button"><img src="../resources/refresca.png" alt=""></button>
             <button type="button"><img src="../resources/xml.png" alt=""></button>
         </div>
@@ -58,14 +59,11 @@
 		</table>
         <div class="barra_inferior">
             <button type="button"><img src="../resources/Home.png" alt="">Change dir</button>
-            <s:select list="formData.mru" name="queryData.dir" onchange="jQuery('form')[0].submit();"></s:select>
+            <s:select list="formData.mruList" name="formData.dirSelected" onchange="enviar();"></s:select>
             <button type="button"><img src="../resources/carpeta.png" alt=""></button>
             <span>Videos: #Num de <s:property value="%{formData.films[0].total}"/> | Media Rating: #Media de #MEDIA</span>
             <button type="submit"><img src="../resources/refresca.png" alt="">Refresh</button>
         </div>
 	</form>    
-    <script>
-        jQuery("input[name='queryData.query']").on("keydown",function(e) { if (e.which == 13) $("form")[0].submit(); });
-    </script>
 </body>
 </html>
