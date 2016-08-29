@@ -17,6 +17,9 @@ public class DataForm {
     private boolean showPend;
     private boolean showDupl;
     private String dirSelected;
+    private int numero;
+    private float rating;
+    private float ratingTotal;
     
     public String getQuery() {
         return query;
@@ -53,7 +56,16 @@ public class DataForm {
     }
     public void setDirSelected(String dirSelected) {
         this.dirSelected = dirSelected;
-    }    
+    }        
+    public int getNumero() {
+        return numero;
+    }
+    public float getRating() {
+        return rating;
+    }
+    public float getRatingTotal() {
+        return ratingTotal;
+    }
     
     public DataForm() {
         
@@ -61,8 +73,15 @@ public class DataForm {
             map.put(Pattern.compile("\\s\\(.+\\)").matcher(FileSystemView.getFileSystemView().getSystemDisplayName(root)).replaceAll(""), root.getPath());
         }
         
+        try { //get rating total once
+            ResultSet res = MySQL.getInstance().getConnection().createStatement().executeQuery("SELECT AVG(imdb_rating) ratingTotal FROM vw_film WHERE imdb_rating > 0");
+            while (res.next()) {
+                ratingTotal = res.getFloat("ratingTotal");
+            }
+        } catch(Exception e) {            
+        }
+        
     }       
-    
 
     /**
      * Last used paths from db filtered by local fs
@@ -110,7 +129,9 @@ public class DataForm {
         query.append(" ORDER BY imdb_rating DESC, imdb_ratingcount DESC, Id");
         
         try {
-            ResultSet res = MySQL.getInstance().getConnection().createStatement().executeQuery(query.toString());            
+            ResultSet res = MySQL.getInstance().getConnection().createStatement().executeQuery(query.toString());
+            numero = 0;
+            rating = 0;
             while (res.next()) {
                 DataFilm film = new DataFilm();
                 film.setId(res.getInt(DataFilm.ID));
@@ -125,14 +146,17 @@ public class DataForm {
                 film.setTiene_html(res.getInt(DataFilm.TIENE_HTML));
                 film.setTiene_omdb(res.getInt(DataFilm.TIENE_OMDB));    
                 films.add(film);
+                numero++;
+                rating += film.getImdb_rating();
             }
+            rating /=numero;
         } catch (Exception e) {
             e.printStackTrace();
         }
         
+        //this.films = films;
         return films;
         
     }
-
       
 }

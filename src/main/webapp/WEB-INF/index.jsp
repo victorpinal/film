@@ -8,14 +8,15 @@
 	<title><s:text name="title"/></title>
 	<link rel="stylesheet" href="../resources/index.css">
     <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.colorbox/1.6.4/jquery.colorbox-min.js"></script>
     <script src="../resources/index.js"></script>
     <s:head  />
 </head>
 <body>
 	<form method="post" accept-charset="utf-8">
         <div class="barra_superior">
-            <input type="text" name="formData.query" class="relleno" value="<s:property value='formData.query'/>" placeholder="">                       
-            <button type="button"><img src="../resources/close.png" alt=""></button>
+            <input type="text" id="query" name="formData.query" class="relleno" value="<s:property value='formData.query'/>" placeholder="">                       
+            <button type="button" onclick="$('#query').val('');"><img src="../resources/close.png" alt="Borrar busqueda"></button>
             <s:checkbox key="formData.showOnlyMRU"/>
             <s:checkbox key="formData.showAll"/>
             <s:checkbox key="formData.showPend"/>
@@ -26,7 +27,6 @@
 		<table border="1">	
 			<thead>
 				<tr>
-					<th>Ver</th>
 					<th>Archivo</th>
 					<th>Info</th>
 					<th>Ruta</th>
@@ -42,7 +42,6 @@
 			<tbody>
                 <s:iterator value="formData.films" var="film">
                 <tr>
-                    <td class="img_col"><img src="../resources/Video.png"></td>
                     <td><s:property value="#film.filename"/></td>
                     <td class="img_col"><img src="../resources/informacion.png"></td>
                     <td><s:property value="#film.ruta"/></td>
@@ -58,10 +57,8 @@
 			</tbody>
 		</table>
         <div class="barra_inferior">
-            <button type="button"><img src="../resources/Home.png" alt="">Change dir</button>
             <s:select list="formData.mruList" name="formData.dirSelected" onchange="enviar();"></s:select>
-            <button type="button"><img src="../resources/carpeta.png" alt=""></button>
-            <span>Videos: #Num de <s:property value="%{formData.films[0].total}"/> | Media Rating: #Media de #MEDIA</span>
+            <span>Videos: <s:property value="formData.numero"/> de <s:property value="%{formData.films[0].total}"/> | Media Rating: <s:property value="formData.rating"/> de <s:property value="formData.ratingTotal"/></span>
             <button type="submit"><img src="../resources/refresca.png" alt="">Refresh</button>
         </div>
 	</form>    
