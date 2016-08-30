@@ -1,0 +1,36 @@
+html,body {
+    margin: 0px;
+    height: 100%;
+}
+section {
+    height: 100%;
+    overflow: hidden;
+}
+#title {    
+    text-align: center;
+    font-weight: bold;
+    font-variant: small-caps;
+    background-color: lightgray;            
+}
+article {    
+    display:flex;
+    height: 100%;    
+}
+#poster {
+    min-width: 80px;
+    max-width: 200px;
+    border: 1px solid lightgray;    
+}
+#detail {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+span {    
+    display: block;    
+    margin: 0px;
+    border: 1px solid lightgray;
+}
+span#plot {
+    flex-grow: 1;
+}

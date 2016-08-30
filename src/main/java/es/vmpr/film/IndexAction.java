@@ -4,10 +4,10 @@ import java.util.logging.Logger;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-public class Index extends ActionSupport {
+public class IndexAction extends ActionSupport {
 
     private static final long serialVersionUID = 1L;
-    private static final Logger _log = Logger.getLogger(Index.class.getName());
+    private static final Logger _log = Logger.getLogger(IndexAction.class.getName());
     private static final String CONNECTION_ERROR = "connection_error";
     
     private DataConnection connectionData;      //db connect. data    

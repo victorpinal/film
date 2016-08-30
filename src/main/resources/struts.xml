@@ -22,13 +22,17 @@
             <exception-mapping result="error_interno" exception="java.sql.SQLException"></exception-mapping>
         </global-exception-mappings>              
 
-        <action name="index" class="es.vmpr.film.Index">
+        <action name="index" class="es.vmpr.film.IndexAction">
             <!-- <result type="redirectAction">
                 <param name="actionName">HelloWorld</param>
                 <param name="namespace">/example</param>
             </result> -->
             <result name="connection_error">WEB-INF/connectionData.jsp</result>
             <result>WEB-INF/index.jsp</result>
+        </action>
+        
+        <action name="info" class="es.vmpr.film.InfoAction">
+            <result>WEB-INF/info.jsp</result>
         </action>
 
     </package>
