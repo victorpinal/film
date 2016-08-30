@@ -31,10 +31,7 @@
 					<th>Info</th>
 					<th>Ruta</th>
 					<th>Nombre</th>
-					<th>&nbsp;</th>
-					<th>Sub</th>
 					<th>Imdb</th>
-					<th>&nbsp;</th>
 					<th>Rating</th>
 					<th>R.Count</th>
 				</tr>
@@ -45,11 +42,8 @@
                     <td><s:property value="#film.filename"/></td>
                     <td class="img_col"><img class="info" src="../resources/informacion.png" data-id="<s:property value='#film.id'/>"></td>
                     <td><s:property value="#film.ruta"/></td>
-                    <td><s:property value="#film.name"/></td>
-                    <td class="img_col"><img src="../resources/busca.png"></td>
-                    <td class="img_col"><img src="../resources/subs.png"></td>
-                    <td><s:property value="#film.imdb_id"/></td>
-                    <td class="img_col"><img src="../resources/carpeta.png"></td>
+                    <td><s:property value="#film.name"/></td>                    
+                    <td class="img_col"><img class="imdb" src="../resources/carpeta.png" data-id="<s:property value='#film.imdb_id'/>"></td>
                     <td><s:property value="#film.imdb_rating"/></td>
                     <td><s:property value="#film.imdb_ratingcount"/></td>
                 </tr>
